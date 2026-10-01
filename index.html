@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102e3a">
+  <meta name="description" content="서울 한강 나들목에서 가장 가까운 지하철역과 예상 도보 시간을 찾아보세요.">
+  <title>한강 나들목 지도 · 가까운 역 찾기</title>
+  <link rel="stylesheet" href="./leaflet.css">
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+    <aside class="sidebar" aria-label="한강 나들목 탐색">
+      <header class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> SEOUL · HANGANG</div>
+        <h1>강으로 가는 길,<br><em>나들목</em>부터</h1>
+        <p>나들목을 고르면 가장 가까운 역과 예상 도보 시간을 알려드려요.</p>
+      </header>
+
+      <div class="controls">
+        <label class="search-wrap">
+          <span class="sr-only">나들목 또는 역 검색</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg>
+          <input id="search" type="search" placeholder="나들목 · 가까운 역 검색" autocomplete="off">
+        </label>
+        <div class="filter-label">한강공원</div>
+        <div id="filters" class="filters" role="group" aria-label="한강공원별 보기"></div>
+        <button id="routeToggle" class="route-toggle" type="button" aria-expanded="false">⌁ &nbsp; 러닝 코스 만들기 <span>＋</span></button>
+      </div>
+
+      <section id="routePanel" class="route-panel hidden" aria-label="러닝 코스 만들기">
+        <div class="route-panel-head"><strong>나만의 순환 코스</strong><span>지도에 지점을 순서대로 찍어주세요</span></div>
+        <div id="routePoints" class="route-points">최소 3곳을 찍으면 출발점으로 돌아오는 경로를 만들 수 있어요.</div>
+        <label class="water-option"><input id="preferWater" type="checkbox" checked><span>한강 · 하천길 우선</span></label>
+        <div class="route-actions"><button id="calculateRoute" class="calculate-route" type="button" disabled>코스 계산</button><button id="undoPoint" type="button" disabled>되돌리기</button><button id="clearRoute" type="button" disabled>초기화</button></div>
+        <div id="routeResult" class="route-result hidden" aria-live="polite"></div>
+      </section>
+
+      <section id="detail" class="detail hidden" aria-live="polite"></section>
+
+      <div class="list-heading"><strong id="listTitle">나들목</strong><span id="count">불러오는 중</span></div>
+      <div id="list" class="list" role="list"></div>
+      <footer class="sidebar-footer">
+        <p>시간은 역사 중심 좌표까지의 예상치입니다. 일부는 보행 지도에 통로가 연결되지 않아 거리로 추정했습니다. 실제 출입구, 신호, 현장 통제에 따라 달라질 수 있어요.</p>
+        <details>
+          <summary>데이터 출처와 기준</summary>
+          <p>나들목: <a href="https://hangang.seoul.go.kr/www/facility/map.tab?opt11=INTERCHANGE&amp;opt2=PARK_APPROACH&amp;opt3=APPROACH" target="_blank" rel="noopener">서울시 미래한강본부 시설지도</a>. 보도·보차도 61곳을 표시했습니다. 공식 좌표가 서울 밖으로 기록된 세빛섬나들목 1곳과 차도 전용 7곳은 제외했습니다.</p>
+          <p>역 좌표: <a href="https://t-data.seoul.go.kr/dataprovide/trafficdataviewfile.do?data_id=36" target="_blank" rel="noopener">서울시 교통빅데이터 지하철역 좌표정보</a>. 도보 시간: <a href="https://valhalla.github.io/valhalla/api/matrix/api-reference/" target="_blank" rel="noopener">Valhalla 보행 경로</a>와 OpenStreetMap 도로망으로 2026-10-01 계산. 가까운 후보역 24곳을 비교했으며, 통로 연결이 누락된 8곳은 직선거리 × 1.45, 시속 4.5km로 추정했습니다.</p>
+        </details>
+      </footer>
+    </aside>
+
+    <section class="map-shell" aria-label="한강 나들목 지도">
+      <div id="map"></div>
+      <div class="map-topline"><span class="river-icon">〰</span> 한강 나들목 지도 <span class="map-separator">/</span> 서울</div>
+      <div id="mapInstruction" class="map-instruction hidden">지도를 눌러 경유지를 추가하세요 · 최대 8곳</div>
+      <button id="resetMap" class="reset-map" type="button" title="전체 나들목 보기">전체 보기 <span aria-hidden="true">↗</span></button>
+      <div class="map-legend"><span class="legend-dot"></span> 나들목 <span class="legend-dot station-dot"></span> 가까운 역</div>
+    </section>
+  </main>
+  <script src="./leaflet.js"></script>
+  <script src="./app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+.app {
+  display: grid;
+  grid-template-columns: minmax(340px, 410px) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: auto;
+  background: #fafaf6;
+  z-index: 500;
+  box-shadow: 5px 0 22px #18323b12;
+}
+.hero {
+  background: #102e3a;
+  color: #fff;
+  padding: 32px 30px 29px;
+  position: relative;
+  overflow: hidden;
+  flex: none;
+}
+.hero:after {
+  content: '〰';
+  position: absolute;
+  right: -29px;
+  bottom: -82px;
+  font-size: 248px;
+  line-height: 1;
+  color: #2f7880;
+  opacity: .25;
+  transform: rotate(-16deg);
+  pointer-events: none;
+}
+.eyebrow {font-size:10px;letter-spacing:.23em;font-weight:800;color:#a2d9d4;display:flex;align-items:center;gap:8px}
+.eyebrow-dot {width:7px;height:7px;background:#78d7b8;border-radius:50%;box-shadow:0 0 0 4px #78d7b824}
+.hero h1 {font-size:35px;line-height:1.22;letter-spacing:-.055em;margin:22px 0 14px;position:relative;z-index:1}
+.hero h1 em {font-style:normal;color:#9de1cd}
+.hero p {max-width:310px;font-size:13px;line-height:1.65;color:#d3e3e4;margin:0;position:relative;z-index:1}
+.controls {padding:22px 22px 17px;border-bottom:1px solid #e7ebe7;flex:none}
+.search-wrap {display:flex;align-items:center;gap:10px;border:1px solid #dbe3df;border-radius:10px;background:#fff;padding:0 12px;height:45px;transition:border-color .2s,box-shadow .2s}
+.search-wrap:focus-within {border-color:#4a9a91;box-shadow:0 0 0 3px #4a9a9122}
+.search-wrap svg {width:18px;height:18px;fill:none;stroke:#6a898b;stroke-width:2;stroke-linecap:round;flex:none}
+.search-wrap input {border:0;outline:none;background:transparent;min-width:0;flex:1;color:#17353c;font-size:13px}
+.search-wrap input::placeholder {color:#94a6a4}
+.filter-label {margin:18px 0 9px;font-size:11px;font-weight:800;color:#758b8a;letter-spacing:.06em}
+.filters {display:flex;gap:7px;overflow-x:auto;padding-bottom:3px;scrollbar-width:thin}
+.filter {flex:none;border:1px solid #dce6e1;background:#fff;color:#536d6e;border-radius:20px;padding:7px 11px;font-size:12px;font-weight:700;white-space:nowrap}
+.filter.active {background:#187f7d;color:#fff;border-color:#187f7d}
+.filter:hover:not(.active) {border-color:#85b9ae;color:#187f7d}
+.list-heading {display:flex;justify-content:space-between;align-items:center;padding:20px 23px 9px;flex:none}
+.list-heading strong {font-size:15px}
+.list-heading span {font-size:11px;color:#829494;font-weight:700}
+.list {padding:0 14px 15px;flex:none}
+.entry {width:100%;text-align:left;border:1px solid transparent;background:transparent;border-radius:11px;padding:13px 12px;display:flex;gap:11px;align-items:flex-start;color:inherit}
+.entry:hover {background:#eef5f0}
+.entry.selected {background:#e4f2ec;border-color:#bddbd0}
+.entry-icon {flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#dceee6;color:#16827d;font-weight:900;font-size:15px}
+.entry-main {min-width:0;flex:1}
+.entry-name {font-weight:800;font-size:13px;line-height:1.45;display:block;word-break:keep-all}
+.entry-sub {display:block;color:#78908e;font-size:11px;margin-top:4px}
+.entry-time {flex:none;text-align:right;color:#187f7d;font-size:12px;font-weight:800;margin-top:8px}
+.entry-time small {display:block;color:#78908e;font-size:10px;font-weight:500;margin-top:3px}
+.empty {padding:28px 15px;color:#809391;text-align:center;font-size:13px}
+.detail {margin:18px 21px 0;border:1px solid #cde1d6;background:#eff8f2;border-radius:15px;padding:19px 19px 17px;box-shadow:0 7px 18px #13463b0c;flex:none}
+.detail-top {display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.detail-kicker {font-size:10px;letter-spacing:.09em;font-weight:800;color:#298b7e}
+.detail h2 {font-size:20px;line-height:1.35;letter-spacing:-.035em;margin:7px 0 0;word-break:keep-all}
+.close-detail {border:0;background:#d9ece3;width:25px;height:25px;border-radius:50%;color:#44766e;flex:none;font-size:17px;line-height:1}
+.route-card {background:#fff;border:1px solid #dfece3;border-radius:11px;padding:14px;margin-top:16px}
+.route-label {color:#76928b;font-size:11px;font-weight:700}
+.route-main {display:flex;align-items:baseline;justify-content:space-between;margin-top:8px;gap:10px}
+.station-name {font-size:17px;font-weight:900;letter-spacing:-.035em}
+.station-lines {font-size:10px;color:#7b9691;margin-top:4px}
+.minutes {font-size:24px;font-weight:900;color:#12857a;white-space:nowrap;letter-spacing:-.05em}
+.minutes small {font-size:12px;margin-left:2px}
+.route-distance {font-size:11px;color:#78928d;margin-top:9px}
+.detail-address {font-size:11px;color:#66827e;line-height:1.5;margin:14px 0 0}
+.detail-address strong {color:#3c655e}
+.directions {display:flex;align-items:center;justify-content:center;gap:7px;background:#197f78;color:#fff;text-decoration:none;border-radius:9px;height:39px;font-size:12px;font-weight:800;margin-top:15px}
+.directions:hover {background:#126b65}
+.sidebar-footer {padding:17px 23px 26px;border-top:1px solid #e9ece6;margin-top:auto;color:#8b9a96;font-size:10px;line-height:1.7;flex:none}
+.sidebar-footer p {margin:0 0 7px}
+.sidebar-footer details {margin-top:9px}
+.sidebar-footer summary {cursor:pointer;color:#657e79;font-weight:700}
+.sidebar-footer details p {margin-top:9px}
+.map-shell {position:relative;min-width:0;min-height:0;background:#dcece7}
+.map-shell #map {height:100%;width:100%}
+.map-topline {position:absolute;z-index:400;left:24px;top:22px;background:#fffef7ed;backdrop-filter:blur(8px);border:1px solid #e0e8dd;border-radius:10px;box-shadow:0 4px 17px #18323b1a;padding:11px 15px;font-size:12px;font-weight:800;color:#24474c}
+.river-icon {color:#238a87;font-size:19px;vertical-align:-2px;margin-right:6px}
+.map-separator {color:#a4b9b4;margin:0 4px}
+.reset-map {position:absolute;z-index:400;right:24px;top:22px;border:1px solid #d5e5dd;border-radius:10px;background:#fffef7ed;color:#276a69;box-shadow:0 4px 17px #18323b1a;padding:12px 15px;font-size:12px;font-weight:800}
+.reset-map:hover {background:#edf8f2}
+.map-legend {position:absolute;z-index:400;right:24px;bottom:31px;background:#fffef7ed;border:1px solid #e0e8dd;border-radius:10px;padding:10px 13px;display:flex;align-items:center;gap:7px;font-size:10px;color:#42625e;box-shadow:0 4px 17px #18323b1a}
+.legend-dot {width:10px;height:10px;background:#17847f;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #17847f}
+.legend-dot.station-dot {background:#e58550;box-shadow:0 0 0 1px #e58550;margin-left:9px}
+.pin {display:grid;place-items:center;width:18px;height:18px;background:#13867f;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 8px #163e3e80;transition:transform .16s}
+.pin.selected {background:#eb8252;width:23px;height:23px;transform:translate(-2px,-2px);box-shadow:0 0 0 5px #eb825252,0 2px 8px #163e3e80}
+.station-pin {width:17px;height:17px;background:#e58550;border:3px solid white;box-shadow:0 0 0 4px #e5855055,0 2px 8px #163e3e80;border-radius:3px;transform:rotate(45deg)}
+.leaflet-tooltip {font-family:inherit;font-weight:700;font-size:11px;border:0;border-radius:7px;box-shadow:0 3px 9px #163e3e33}
+.leaflet-control-attribution {font-size:9px!important}
+@media(max-width:700px) {
+  .app {display:flex;flex-direction:column}
+  .sidebar {order:2;height:55%;box-shadow:0 -5px 20px #18323b18;border-radius:17px 17px 0 0;margin-top:-13px;position:relative}
+  .map-shell {order:1;height:45%;flex:none}
+  .hero {padding:16px 20px 14px}
+  .hero:after {font-size:140px;right:-12px;bottom:-56px}
+  .eyebrow {font-size:9px}
+  .hero h1 {font-size:23px;line-height:1.15;margin:10px 0 5px}
+  .hero h1 br {display:none}
+  .hero p {font-size:10px}
+  .controls {padding:13px 15px}
+  .filter-label {margin:11px 0 7px}
+  .filter {padding:5px 9px;font-size:11px}
+  .list-heading {padding:14px 17px 6px}
+  .list {padding:0 8px 12px}
+  .detail {margin:13px 14px 0;padding:14px}
+  .detail h2 {font-size:17px}
+  .map-topline {left:12px;top:12px;padding:8px 10px;font-size:10px}
+  .reset-map {right:12px;top:12px;padding:9px 10px;font-size:10px}
+  .map-legend {right:12px;bottom:27px;padding:7px 8px;font-size:9px}
+  .sidebar-footer {padding:14px 17px 23px}
+  .search-wrap {height:40px}
+}
